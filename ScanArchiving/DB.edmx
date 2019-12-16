@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ScanArchivingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArchiveInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="编号" Type="nvarchar" MaxLength="50" />
+          <Property Name="图名" Type="nvarchar" MaxLength="50" />
+          <Property Name="图号" Type="nvarchar" MaxLength="50" />
+          <Property Name="是否归档" Type="int" />
+          <Property Name="pdf" Type="nvarchar" MaxLength="255" />
+          <Property Name="dwf" Type="nvarchar" MaxLength="255" />
+          <Property Name="plt" Type="nvarchar" MaxLength="255" />
+          <Property Name="dwg" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VolumID" Type="uniqueidentifier" />
+          <Property Name="ProjectID" Type="uniqueidentifier" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArchiveCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageSize" Type="int" />
+          <Property Name="ElectronicsFileNumber" Type="int" />
+          <Property Name="V_ArchiveNumber" Type="int" />
+          <Property Name="V_VolumeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="VolumeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="V_VolumeLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="V_VolumeText" Type="text" />
+          <Property Name="IconName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MapCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="V_OrganizationDate" Type="date" />
+          <Property Name="Designer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phase" Type="nvarchar" MaxLength="50" />
+          <Property Name="P_RoadLevel" Type="int" />
+          <Property Name="RoodLength" Type="float" />
+          <Property Name="P_RoadHeight" Type="float" />
+          <Property Name="RoadType" Type="nvarchar" MaxLength="50" />
+          <Property Name="InitialPile" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainTechnicalIndicators" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disc" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecretLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="KeepDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="text" />
+          <Property Name="QrCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Finished" Type="date" />
+          <Property Name="DesignUnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoadLevel" Type="int" />
+          <Property Name="RoadHeight" Type="float" />
+          <Property Name="PlanningMileage" Type="float" />
+          <Property Name="DesignMileage" Type="float" />
+          <Property Name="PreMileage" Type="float" />
+          <Property Name="DrawingDesignMileage" Type="float" />
+          <Property Name="WorkingMileage" Type="float" />
+          <Property Name="Investment" Type="float" />
+          <Property Name="Awards" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="text" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Volume">
+          <Key>
+            <PropertyRef Name="VolumeID" />
+          </Key>
+          <Property Name="VolumeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArchiveCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="VolumeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DossierCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemporaryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="VolumeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VolumeText" Type="text" />
+          <Property Name="VolumeTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArchiveNumber" Type="int" />
+          <Property Name="VolumeLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationDate" Type="date" />
+          <Property Name="OrganizationUnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phase" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageSize" Type="int" />
+          <Property Name="Themewords" Type="nvarchar" MaxLength="50" />
+          <Property Name="KeepDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecretLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdentifyDate" Type="date" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Responsibler" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArchiveDate" Type="date" />
+          <Property Name="Remarks" Type="text" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ScanArchivingModelStoreContainer">
+          <EntitySet Name="ArchiveInfo" EntityType="Self.ArchiveInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Volume" EntityType="Self.Volume" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ScanArchivingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ArchiveInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="编号" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="图名" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="图号" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="是否归档" Type="Int32" />
+          <Property Name="pdf" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dwf" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dwg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="Guid" Nullable="false" />
+          <Property Name="VolumID" Type="Guid" />
+          <Property Name="ProjectID" Type="Guid" />
+          <Property Name="Keyword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageSize" Type="Int32" />
+          <Property Name="ElectronicsFileNumber" Type="Int32" />
+          <Property Name="V_ArchiveNumber" Type="Int32" />
+          <Property Name="V_VolumeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="V_VolumeLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="V_VolumeText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MapCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="V_OrganizationDate" Type="DateTime" Precision="0" />
+          <Property Name="Designer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P_RoadLevel" Type="Int32" />
+          <Property Name="RoodLength" Type="Double" />
+          <Property Name="P_RoadHeight" Type="Double" />
+          <Property Name="RoadType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InitialPile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainTechnicalIndicators" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Disc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecretLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KeepDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="QrCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Guid" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finished" Type="DateTime" Precision="0" />
+          <Property Name="DesignUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoadLevel" Type="Int32" />
+          <Property Name="RoadHeight" Type="Double" />
+          <Property Name="PlanningMileage" Type="Double" />
+          <Property Name="DesignMileage" Type="Double" />
+          <Property Name="PreMileage" Type="Double" />
+          <Property Name="DrawingDesignMileage" Type="Double" />
+          <Property Name="WorkingMileage" Type="Double" />
+          <Property Name="Investment" Type="Double" />
+          <Property Name="Awards" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Volume">
+          <Key>
+            <PropertyRef Name="VolumeID" />
+          </Key>
+          <Property Name="VolumeID" Type="Guid" Nullable="false" />
+          <Property Name="ProjectID" Type="Guid" Nullable="false" />
+          <Property Name="Keyword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DossierCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TemporaryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VolumeText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VolumeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveNumber" Type="Int32" />
+          <Property Name="VolumeLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationDate" Type="DateTime" Precision="0" />
+          <Property Name="OrganizationUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageSize" Type="Int32" />
+          <Property Name="Themewords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KeepDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecretLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentifyDate" Type="DateTime" Precision="0" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Responsibler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArchiveDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ScanArchivingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArchiveInfo" EntityType="Self.ArchiveInfo" />
+          <EntitySet Name="File" EntityType="Self.File" />
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="Volume" EntityType="Self.Volume" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ScanArchivingModelStoreContainer" CdmEntityContainer="ScanArchivingEntities">
+          <EntitySetMapping Name="ArchiveInfo">
+            <EntityTypeMapping TypeName="ScanArchivingModel.ArchiveInfo">
+              <MappingFragment StoreEntitySet="ArchiveInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="编号" ColumnName="编号" />
+                <ScalarProperty Name="图名" ColumnName="图名" />
+                <ScalarProperty Name="图号" ColumnName="图号" />
+                <ScalarProperty Name="是否归档" ColumnName="是否归档" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="dwf" ColumnName="dwf" />
+                <ScalarProperty Name="plt" ColumnName="plt" />
+                <ScalarProperty Name="dwg" ColumnName="dwg" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="File">
+            <EntityTypeMapping TypeName="ScanArchivingModel.File">
+              <MappingFragment StoreEntitySet="File">
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="VolumID" ColumnName="VolumID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="ArchiveCode" ColumnName="ArchiveCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="FileTitle" ColumnName="FileTitle" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="ElectronicsFileNumber" ColumnName="ElectronicsFileNumber" />
+                <ScalarProperty Name="V_ArchiveNumber" ColumnName="V_ArchiveNumber" />
+                <ScalarProperty Name="V_VolumeCode" ColumnName="V_VolumeCode" />
+                <ScalarProperty Name="VolumeName" ColumnName="VolumeName" />
+                <ScalarProperty Name="V_VolumeLocation" ColumnName="V_VolumeLocation" />
+                <ScalarProperty Name="V_VolumeText" ColumnName="V_VolumeText" />
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="MapCode" ColumnName="MapCode" />
+                <ScalarProperty Name="V_OrganizationDate" ColumnName="V_OrganizationDate" />
+                <ScalarProperty Name="Designer" ColumnName="Designer" />
+                <ScalarProperty Name="Phase" ColumnName="Phase" />
+                <ScalarProperty Name="P_RoadLevel" ColumnName="P_RoadLevel" />
+                <ScalarProperty Name="RoodLength" ColumnName="RoodLength" />
+                <ScalarProperty Name="P_RoadHeight" ColumnName="P_RoadHeight" />
+                <ScalarProperty Name="RoadType" ColumnName="RoadType" />
+                <ScalarProperty Name="InitialPile" ColumnName="InitialPile" />
+                <ScalarProperty Name="MainTechnicalIndicators" ColumnName="MainTechnicalIndicators" />
+                <ScalarProperty Name="Disc" ColumnName="Disc" />
+                <ScalarProperty Name="SecretLevel" ColumnName="SecretLevel" />
+                <ScalarProperty Name="KeepDate" ColumnName="KeepDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="QrCode" ColumnName="QrCode" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="ScanArchivingModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="DesignUnit" ColumnName="DesignUnit" />
+                <ScalarProperty Name="RoadLevel" ColumnName="RoadLevel" />
+                <ScalarProperty Name="RoadHeight" ColumnName="RoadHeight" />
+                <ScalarProperty Name="PlanningMileage" ColumnName="PlanningMileage" />
+                <ScalarProperty Name="DesignMileage" ColumnName="DesignMileage" />
+                <ScalarProperty Name="PreMileage" ColumnName="PreMileage" />
+                <ScalarProperty Name="DrawingDesignMileage" ColumnName="DrawingDesignMileage" />
+                <ScalarProperty Name="WorkingMileage" ColumnName="WorkingMileage" />
+                <ScalarProperty Name="Investment" ColumnName="Investment" />
+                <ScalarProperty Name="Awards" ColumnName="Awards" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volume">
+            <EntityTypeMapping TypeName="ScanArchivingModel.Volume">
+              <MappingFragment StoreEntitySet="Volume">
+                <ScalarProperty Name="VolumeID" ColumnName="VolumeID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="ArchiveCode" ColumnName="ArchiveCode" />
+                <ScalarProperty Name="VolumeCode" ColumnName="VolumeCode" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="DossierCode" ColumnName="DossierCode" />
+                <ScalarProperty Name="TemporaryCode" ColumnName="TemporaryCode" />
+                <ScalarProperty Name="VolumeName" ColumnName="VolumeName" />
+                <ScalarProperty Name="VolumeText" ColumnName="VolumeText" />
+                <ScalarProperty Name="VolumeTitle" ColumnName="VolumeTitle" />
+                <ScalarProperty Name="ArchiveNumber" ColumnName="ArchiveNumber" />
+                <ScalarProperty Name="VolumeLocation" ColumnName="VolumeLocation" />
+                <ScalarProperty Name="OrganizationDate" ColumnName="OrganizationDate" />
+                <ScalarProperty Name="OrganizationUnit" ColumnName="OrganizationUnit" />
+                <ScalarProperty Name="Phase" ColumnName="Phase" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="Themewords" ColumnName="Themewords" />
+                <ScalarProperty Name="KeepDate" ColumnName="KeepDate" />
+                <ScalarProperty Name="SecretLevel" ColumnName="SecretLevel" />
+                <ScalarProperty Name="IdentifyDate" ColumnName="IdentifyDate" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Responsibler" ColumnName="Responsibler" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="ArchiveDate" ColumnName="ArchiveDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

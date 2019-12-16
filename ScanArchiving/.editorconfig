@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0069: 应释放可释放的字段
+dotnet_diagnostic.IDE0069.severity = none
+
+# IDE0067: 丢失范围之前释放对象
+dotnet_diagnostic.IDE0067.severity = none
